@@ -17,9 +17,7 @@ public class PanelSitios extends JPanel {
 			super();
 			this.setLayout(null);
 			
-			/*JSeparator separator = new JSeparator();
-			separator.setOrientation(SwingConstants.VERTICAL);
-			separator.setBounds(402, 158, 46, 584);*/
+	
 			
 			
 			this.add(getBotaoEscolherArquivo());
