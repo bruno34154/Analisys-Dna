@@ -6,9 +6,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFileChooser;
 
+import model.DNA;
 import view.PanelSitios;
 
 public class ControllerButton implements ActionListener {
@@ -24,11 +27,18 @@ public class ControllerButton implements ActionListener {
 			JFileChooser fc = new JFileChooser();
 			//abri o fileChosser em aba separadas
 			int res = fc.showOpenDialog(null);
+			List<DNA> arrDNA = new ArrayList<DNA>();
 			if(res == JFileChooser.APPROVE_OPTION) {
 				File file = fc.getSelectedFile();
-				
+				ControllerArquivos controllerArq = new ControllerArquivos(file);
 				try {
-					lerArquivo(file);
+					
+					//lerArquivo(file);
+					arrDNA = controllerArq.lerArquivo();
+					
+					for(int i=0; i<arrDNA.size(); i++) {
+						System.out.println("especie: " + arrDNA.get(i).getTaxon() + "\n" + "base: " + arrDNA.get(i).getBase());
+					}
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
