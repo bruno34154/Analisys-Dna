@@ -5,6 +5,7 @@ import view.PanelSitios;
 
 public class ControllerFrame {
 	static PanelSitios ps;
+	
 	public  ControllerFrame(){
 		
 	}
