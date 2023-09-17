@@ -109,7 +109,8 @@ public class ControllerArquivos {
 		
 	}
 	
-	public void lerArquivoPhy() throws IOException {
+	@SuppressWarnings("null")
+	public List<DNA>  lerArquivoPhy() throws IOException {
 		List<DNA> arrDna = new ArrayList<DNA>();
 		
 		BufferedReader BuffRead;
@@ -118,13 +119,49 @@ public class ControllerArquivos {
 		String taxon = "";
 		String base = "";
 		Boolean key = false;
-		String arrLinha[];
+		List <String> arrTaxon  = new ArrayList<String>();
+		List<String> arrBase = new ArrayList<String>(); 
+		int cont = 0;
+		 String arrLinha[];
 		
 		while(true) {	
 			DNA dna = new DNA("", "");	
 			if(linha != null ) {
 				
-				System.out.println(linha);
+			
+				
+				arrLinha = linha.split("");
+				if(key == true) {
+					//System.out.println(linha);
+				for(int i = 0; i<arrLinha.length-1; i++) {
+					if(linha.startsWith("P")) {
+						taxon = arrLinha[0] + arrLinha[1];
+						
+					}
+					else {
+						base = base + arrLinha[i];
+						
+					}
+					
+				}
+				if(linha.startsWith("P")) {
+					arrBase.add(base);
+					arrTaxon.add(taxon);
+				}
+				else {
+					if(cont > 5) {
+						cont = 0;
+					}
+					arrBase.add(cont, arrBase.get(cont) + base);
+					cont++;	
+				}
+				}
+				if(linha.contains("6 ")) {
+					key = true;
+				}
+				
+				
+				
 				
 			}
 			
@@ -135,8 +172,16 @@ public class ControllerArquivos {
 			linha = BuffRead.readLine();
 		}
 		BuffRead.close();
-		
-		
+		for(int j = 0; j<arrTaxon.size(); j++) {
+			DNA dna = new DNA("", "");
+			System.out.println("especie " + arrTaxon.get(j) + "\n base: " + arrBase.get(j));
+			dna.setTaxon(arrTaxon.get(j));
+			dna.setBase(arrBase.get(j));
+			arrDna.add(dna);
+		}
+		return arrDna;
 	}
+	
+	
 	
 }

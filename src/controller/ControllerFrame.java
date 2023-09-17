@@ -1,5 +1,7 @@
 package controller;
 
+import javax.swing.JScrollPane;
+
 import view.Frame;
 import view.PanelSitios;
 
@@ -14,7 +16,11 @@ public class ControllerFrame {
 		// TODO Auto-generated method stub
 		
 		ps = new PanelSitios();
-		frame.setContentPane(ps);
+		JScrollPane scroll = new JScrollPane(ps);
+		scroll.setSize(1100, 700);
+		scroll.setHorizontalScrollBarPolicy( JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scroll.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		frame.setContentPane(scroll);
 		new ControllerButton();
 	}
 
