@@ -9,8 +9,8 @@ public class  Frame extends JFrame {
 		super();
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocation(0,0);
-		this.setSize(1000, 600);
-		this.setResizable(false);
+		this.setSize(1200, 1000);
+		this.setResizable(true);
 		this.setTitle("Computação cientifica");
 		
 		this.setVisible(true);
