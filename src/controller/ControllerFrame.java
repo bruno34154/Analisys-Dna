@@ -1,5 +1,6 @@
 package controller;
 
+import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
 import view.Frame;
@@ -21,6 +22,7 @@ public class ControllerFrame {
 		scroll.setHorizontalScrollBarPolicy( JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scroll.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		frame.setContentPane(scroll);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		new ControllerButton();
 	}
 
